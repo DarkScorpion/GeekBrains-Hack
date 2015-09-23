@@ -1,8 +1,8 @@
 
 var request = require('request');
 
-var _min = process.argv[2];
-var _max = process.argv[3] || _min;
+var _min = parseInt(process.argv[2]);
+var _max = parseInt(process.argv[3]);
 
 var _cookie = require('./config.json').cookie;
 
