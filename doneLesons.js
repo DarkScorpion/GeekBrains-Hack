@@ -1,17 +1,45 @@
 
 var request = require('request');
 
-var _min = parseInt(process.argv[2]);
-var _max = parseInt(process.argv[3]);
-
+var _freeCoursesArr = require('./free.json');
 var _cookie = require('./config.json').cookie;
 
 var _baseUrl = 'http://geekbrains.ru';
 
-doneAllLesons(_min, _max);
+startHack();
 
-function doneAllLesons(min, max)
+function startHack()
 {
+  var fistArg = process.argv[2];
+  switch (fistArg) 
+  {
+    case ('-s'): 
+      var min = parseInt(process.argv[3]);
+      var max = parseInt(process.argv[4]);
+      doneSomeLesons(min, max);
+    break;
+    case ('-f'): 
+      var freeCoursesArr = require('./free.json');
+      doneFreeCourses(freeCoursesArr);
+    break;
+    default: console.log('Используйте ключи:\n\t -s n1 n2 для завершения определённых уроков\n\t -f для завершения хранящихся в базе бесплатных курсов\n');
+  }
+}
+
+function doneFreeCourses(arr)
+{
+  for(var i in arr) 
+  {
+    doneSomeLesons(arr[i].min, arr[i].max);
+  }
+}
+
+function doneSomeLesons(min, max)
+{
+  if(min>max) {
+    console.log('Неправильные параметры начального и конечного урока');
+    return;
+  }
   for(var i=min; i<=max; i++)
   {
     doneLeson(_baseUrl+'/records/'+i+'/done');
