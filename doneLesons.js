@@ -16,7 +16,7 @@ function startHack()
     case ('-s'): 
       var min = parseInt(argv[1]);
       var max = parseInt(argv[2]);
-      doneSomeLesons(min, max);
+      doneSomeLessons(min, max);
     break;
     case ('-f'): 
       doneFreeCourses(_freeCoursesArr);
@@ -29,11 +29,11 @@ function doneFreeCourses(arr)
 {
   for(var i in arr) 
   {
-    doneSomeLesons(arr[i].min, arr[i].max);
+    doneSomeLessons(arr[i].min, arr[i].max);
   }
 }
 
-function doneSomeLesons(min, max)
+function doneSomeLessons(min, max)
 {
   if(min>max) {
     console.log('Неправильные параметры начального и конечного урока');
