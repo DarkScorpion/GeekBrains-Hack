@@ -10,12 +10,12 @@ startHack();
 
 function startHack()
 {
-  var fistArg = process.argv[2];
-  switch (fistArg) 
+  var argv = process.argv.slice(2);
+  switch (argv[0])
   {
     case ('-s'): 
-      var min = parseInt(process.argv[3]);
-      var max = parseInt(process.argv[4]);
+      var min = parseInt(argv[1]);
+      var max = parseInt(argv[2]);
       doneSomeLesons(min, max);
     break;
     case ('-f'): 
