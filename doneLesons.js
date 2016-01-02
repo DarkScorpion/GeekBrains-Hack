@@ -19,8 +19,7 @@ function startHack()
       doneSomeLesons(min, max);
     break;
     case ('-f'): 
-      var freeCoursesArr = require('./free.json');
-      doneFreeCourses(freeCoursesArr);
+      doneFreeCourses(_freeCoursesArr);
     break;
     default: console.log('Используйте ключи:\n\t -s n1 n2 для завершения определённых уроков\n\t -f для завершения хранящихся в базе бесплатных курсов\n');
   }
