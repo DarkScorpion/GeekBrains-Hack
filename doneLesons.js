@@ -1,10 +1,9 @@
 
 var request = require('request');
 
-var _freeCoursesArr = require('./free.json');
-var _cookie = require('./config.json').cookie;
-
+var _db = require('./db.json');
 var _baseUrl = 'http://geekbrains.ru';
+var _cookie = require('./config.json').cookie;
 
 startHack();
 
@@ -23,9 +22,9 @@ function startHack()
       doneSomeLessons(min, max);
     break;
     case ('-f'): 
-      doneFreeCourses(_freeCoursesArr);
+      doneFreeCourses(_db.free);
     break;
-    default: console.log('Используйте ключи:\n\t -s n1 n2 для завершения определённых уроков\n\t -f для завершения хранящихся в базе бесплатных курсов\n');
+    default: console.log(_db.help)
   }
 }
 
