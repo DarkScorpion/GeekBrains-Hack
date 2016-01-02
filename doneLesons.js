@@ -13,6 +13,10 @@ function startHack()
   var argv = process.argv.slice(2);
   switch (argv[0])
   {
+    case ('-q'):
+      var num = parseInt(argv[1]);
+      doneSomeLessons(num, num);
+    break;
     case ('-s'): 
       var min = parseInt(argv[1]);
       var max = parseInt(argv[2]);
