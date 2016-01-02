@@ -44,19 +44,20 @@ function doneSomeLessons(min, max)
   }
   for(var i=min; i<=max; i++)
   {
-    doneLeson(_baseUrl+'/records/'+i+'/done');
+    doneLesson(i);
   }
 }
 
-function doneLeson(pageUrl)
+function doneLesson(number)
 {
+  var pageUrl = _baseUrl+'/records/'+number+'/done'
   request({
-  uri: pageUrl,
-  headers: {
-    cookie: _cookie
-  },
-  method: 'GET',
-  encoding: 'utf-8'
+    uri: pageUrl,
+    headers: {
+      cookie: _cookie
+    },
+    method: 'GET',
+    encoding: 'utf-8'
   }, function (err, res, body) {
     if (!err && res.statusCode == 200) {
       console.log(pageUrl+' OK');
